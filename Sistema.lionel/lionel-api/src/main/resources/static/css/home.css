@@ -1,0 +1,368 @@
+/* RESET & VARIAVEIS */
+:root {
+    --bg-main: #141416;
+    --bg-card: #1c1c1e;
+    --text-primary: #ffffff;
+    --text-secondary: #a1a1a6;
+    --accent: #e5e5e7;
+    --border-color: rgba(255, 255, 255, 0.07);
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Inter', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    position: relative;
+    /* Fundo Geométrico sutil integrado diretamente via gradiente CSS */
+    background-image: 
+        linear-gradient(var(--border-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+    background-size: 80px 80px;
+    background-position: center top;
+}
+
+/* LINHAS DE DESIGN ESTILO WESCHE */
+.grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1400px;
+    height: 100%;
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ALINHAMENTOS GERAIS */
+.text-center { text-align: center; }
+.section-tag {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+/* HEADER */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+    z-index: 10;
+}
+
+.logo {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+.logo span {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    margin: 0 1.5rem;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--text-primary); }
+
+.btn-minimal {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    border-bottom: 1px solid var(--text-primary);
+    padding-bottom: 4px;
+    transition: opacity 0.3s;
+}
+.btn-minimal:hover { opacity: 0.7; }
+
+/* HERO SECTION */
+.hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.hero-content .subtitle {
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.hero-content h1 {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+}
+
+.hero-content p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+}
+
+.cta-group {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    color: #000;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: transform 0.3s, background-color 0.3s;
+}
+.btn-primary:hover {
+    transform: translateY(-2px);
+    background-color: #ffffff;
+}
+
+.btn-secondary {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+.btn-secondary:hover { color: var(--text-primary); }
+
+/* SEÇÃO CONCEITO */
+.concept-section {
+    padding: 8rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+    border-top: 1px solid var(--border-color);
+}
+
+.section-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.concept-text h2 {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+}
+
+.concept-text p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+}
+
+.concept-text .highlight {
+    color: var(--text-primary);
+    border-left: 2px solid var(--accent);
+    padding-left: 1.5rem;
+    font-style: italic;
+}
+
+.concept-image-placeholder {
+    background-color: var(--bg-card);
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* SEÇÃO ESTILOS */
+.styles-section {
+    padding: 8rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+    border-top: 1px solid var(--border-color);
+}
+
+.styles-section h2 {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 4rem;
+}
+
+.styles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.style-card {
+    background-color: var(--bg-card);
+    padding: 3rem 2rem;
+    border: 1px solid var(--border-color);
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+.style-card:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-4px);
+}
+
+.style-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+.style-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+/* SEÇÃO ESPAÇO / AVISO */
+.space-section {
+    padding: 6rem 5% 10rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+    border-top: 1px solid var(--border-color);
+}
+
+.space-card {
+    background-color: var(--bg-card);
+    border: 1px solid rgba(231, 76, 60, 0.2); /* Sutil aviso vermelho na borda */
+    padding: 4rem;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.space-card h2 {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+}
+
+.space-card p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+}
+
+.appointment-badge {
+    display: inline-block;
+    border: 1px solid var(--text-primary);
+    padding: 1rem 2rem;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+/* FOOTER */
+.main-footer {
+    border-top: 1px solid var(--border-color);
+    padding: 4rem 5% 2rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+}
+
+.footer-info h4 {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+.footer-info p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.footer-socials a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-left: 2rem;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.footer-socials a:hover {
+    border-color: var(--text-primary);
+}
+
+.footer-bottom {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+/* RESPONSIVIDADE BÁSICA */
+@media (max-width: 768px) {
+    .section-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .main-header { flex-direction: column; gap: 1.5rem; text-align: center; }
+    .nav-links a { margin: 0 0.7rem; }
+    .hero-content h1 { font-size: 2.5rem; }
+    .cta-group { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .footer-top { flex-direction: column; gap: 2rem; }
+    .footer-socials a { margin-left: 0; margin-right: 1.5rem; }
+}

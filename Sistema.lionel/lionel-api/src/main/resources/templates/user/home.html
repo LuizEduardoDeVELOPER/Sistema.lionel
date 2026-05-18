@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lionel Studio | Projetos Autorais & Realismo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+</head>
+<body>
+
+    <div class="grid-overlay"></div>
+
+    <header class="main-header">
+        <div class="logo">LIONEL <span>STUDIO</span></div>
+        <nav class="nav-links">
+            <a href="#conceito">O Conceito</a>
+            <a href="#estilos">Estilos</a>
+            <a href="#o-espaco">O Espaço</a>
+        </nav>
+        <div class="header-cta">
+            <a href="https://wa.me/seu-numero" target="_blank" class="btn-minimal">Agendar</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content fade-in">
+                <span class="subtitle">Arte Autoral & Alta Performance</span>
+                <h1>A pele como tela para montagens exclusivas.</h1>
+                <p>Projetos desenvolvidos sob medida, combinando geometria sagrada, realismo e precisão cirúrgica para criar obras únicas.</p>
+                <div class="cta-group">
+                    <a href="https://wa.me/seu-numero" target="_blank" class="btn-primary">Iniciar Meu Projeto</a>
+                    <a href="#conceito" class="btn-secondary">Conheça o Studio ↓</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="conceito" class="concept-section scroll-reveal">
+            <div class="section-grid">
+                <div class="concept-text">
+                    <span class="section-tag">O Artista</span>
+                    <h2>Técnica refinada e premiações em convenções.</h2>
+                    <p>Com uma trajetória marcada por prêmios em campeonatos de tatuagem, o foco central do trabalho é o atendimento individualizado. Aqui, nenhuma arte é repetida.</p>
+                    <p class="highlight">O processo começa muito antes da agulha: envolve o estudo da anatomia, montagens digitais exclusivas e uma imersão na ideia do cliente para entregar uma obra de arte viva.</p>
+                </div>
+                <div class="concept-image-placeholder">
+                    <span>[ Espaço para foto do artista ou arte autoral ]</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="estilos" class="styles-section scroll-reveal">
+            <span class="section-tag text-center">Especialidades</span>
+            <h2 class="text-center">Vertentes Artísticas</h2>
+            
+            <div class="styles-grid">
+                <div class="style-card">
+                    <h3>Realismo</h3>
+                    <p>Retratos e composições ricas em contraste, profundidade e texturas impressionantes.</p>
+                </div>
+                <div class="style-card">
+                    <h3>Fechamentos</h3>
+                    <p>Projetos de grande escala perfeitamente adaptados ao fluxo anatômico do corpo.</p>
+                </div>
+                <div class="style-card">
+                    <h3>Geometria & Ornamental</h3>
+                    <p>Linhas milimétricas, padrões simétricos e ornamentos que harmonizam com a anatomia.</p>
+                </div>
+                <div class="style-card">
+                    <h3>Suminagashi</h3>
+                    <p>A fluidez milenar da tinta flutuante japonesa traduzida de forma abstrata e elegante na pele.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="o-espaco" class="space-section scroll-reveal">
+            <div class="space-card">
+                <span class="alert-tag">Exclusividade</span>
+                <h2>Um ambiente projetado para o seu conforto.</h2>
+                <p>Nosso estúdio oferece total privacidade em um ambiente climatizado, reservado e sofisticado. Trabalhamos exclusivamente com insumos e materiais de primeiríssima linha, garantindo segurança absoluta e a melhor cicatrização do mercado.</p>
+                <div class="appointment-badge">
+                    ⚠️ ATENDIMENTO STRICTLY BY APPOINTMENT (SOMENTE COM HORÁRIO MARCADO)
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-top">
+            <div class="footer-info">
+                <h4>Lionel Studio</h4>
+                <p>Brasília, DF</p>
+                <p>Atendimento Privado</p>
+            </div>
+            <div class="footer-socials">
+                <a href="https://instagram.com/seu-instagram" target="_blank">Instagram</a>
+                <a href="https://wa.me/seu-numero" target="_blank">WhatsApp</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Lionel Studio. Todos os direitos reservados. Design Exclusivo.</p>
+        </div>
+    </footer>
+
+    <script th:src="@{/js/home.js}" defer></script>
+</body>
+</html>
