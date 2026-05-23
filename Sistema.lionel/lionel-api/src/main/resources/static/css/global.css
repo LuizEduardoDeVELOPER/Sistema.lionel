@@ -1,0 +1,175 @@
+/* Reset & Variáveis Globais */
+:root {
+    --bg-color: #0a0a0a;
+    --card-bg: #111111;
+    --card-accent: #161616;
+    --border-color: #222222;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --text-muted: #888888;
+    --accent-color: #e5c475; /* Dourado Premium */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color) !important;
+    color: var(--text-primary);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Classes Utilitárias Globais */
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.section-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 38px;
+    font-weight: 300;
+    color: var(--text-primary) !important;
+}
+
+/* Efeito de Revelação Suave (Scroll Reveal) */
+.reveal {
+    position: relative;
+    transform: translateY(50px);
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+#lousaGeometrica {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0; /* Fica atrás de tudo */
+    pointer-events: none; /* Garante que o usuário consiga clicar nos botões e links normalmente */
+    background-color: #0a0a0a;
+}
+
+/* Garante que as seções fiquem transparentes para revelar o canvas geométrico ao fundo */
+section, .categorias, .produtos, .sobre, .pinturas, .loja {
+    background-color: transparent !important;
+    position: relative;
+    z-index: 1;
+}
+
+:root {
+    --bg-color: #0a0a0a;
+    --card-bg: #111111;
+    --card-accent: #161616;
+    --border-color: #222222;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --text-muted: #888888;
+    --accent-color: #e5c475;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color) !important;
+    color: var(--text-primary);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+section {
+    padding: 100px 0;
+    background-color: var(--bg-color);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.section-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 42px;
+    font-weight: 300;
+    color: var(--text-primary) !important;
+}
+
+/* Scroll Reveal */
+.reveal {
+    position: relative;
+    transform: translateY(40px);
+    opacity: 0;
+    transition: all 0.8s ease;
+}
+
+.reveal.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Footer */
+.footer {
+    background-color: #050505;
+    border-top: 1px solid var(--border-color);
+    padding: 60px 0;
+    text-align: center;
+}
+
+.footer__brand h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 32px;
+    letter-spacing: 4px;
+    color: #fff;
+}
+
+.footer__brand p {
+    color: var(--accent-color);
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.footer__copy {
+    margin-top: 30px;
+    font-size: 12px;
+    color: var(--text-muted);
+}

@@ -1,0 +1,160 @@
+.pinturas__grid, .loja__grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.pintura-card, .produto-item {
+    background: var(--card-accent);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 20px;
+}
+
+.pintura-card__img, .produto-item__img-wrapper img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+.pintura-card__info h3, .produto-item h4 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 24px;
+    color: #fff;
+    margin-top: 15px;
+}
+
+.pintura-card__info p, .produto-item__preco {
+    color: var(--accent-color);
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.btn-loja {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 12px;
+    margin-top: 15px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-loja:hover {
+    background: var(--accent-color);
+    color: #000;
+}
+/* ================================================================= */
+/* CONTROLE RESTRITO DO MODAL DE ORÇAMENTO */
+/* ================================================================= */
+.modal-orcamento {
+    position: fixed !important;
+    inset: 0 !important;
+    background-color: rgba(5, 5, 5, 0.95) !important;
+    backdrop-filter: blur(10px);
+    z-index: 9999 !important; /* Fica acima de tudo absolutamente */
+    display: none; /* FORÇA A FICAR OCULTO POR PADRÃO */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Classe injetada pelo JavaScript para abrir */
+.modal-orcamento.open {
+    display: flex !important;
+}
+
+.modal-orcamento__content {
+    background-color: #121212 !important;
+    border: 1px solid #2a2a2a !important;
+    padding: 40px !important;
+    border-radius: 4px !important;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+}
+
+.modal-orcamento__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.modal-orcamento__close:hover { color: #e5c475; }
+
+.modal-orcamento h3 { 
+    font-family: 'Cormorant Garamond', Georgia, serif; 
+    font-size: 26px; 
+    color: #e5c475 !important; 
+    margin-bottom: 8px;
+}
+
+.modal-orcamento p { color: #a0a0a0 !important; font-size: 13px; margin-bottom: 24px; }
+
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; text-align: left; }
+.form-group label { font-size: 11px; text-transform: uppercase; color: #ccc; letter-spacing: 1px; }
+
+.form-group input, .form-group select, .form-group textarea {
+    background-color: #1a1a1a !important;
+    border: 1px solid #333 !important;
+    padding: 12px !important;
+    color: #fff !important;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: #e5c475 !important;
+    outline: none;
+}
+
+.btn-enviar-orcamento {
+    width: 100%;
+    background-color: #e5c475 !important;
+    color: #000 !important;
+    border: none;
+    padding: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 12px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: background-color 0.3s;
+}
+
+.btn-enviar-orcamento:hover { background-color: #fff !important; }
+
+/* BOTÃO FLUTUANTE */
+.btn-agendar-flutuante {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #e5c475 !important;
+    color: #0a0a0a !important;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 50px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    z-index: 999;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
