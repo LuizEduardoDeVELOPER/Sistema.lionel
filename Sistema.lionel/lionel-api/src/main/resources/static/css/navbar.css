@@ -98,3 +98,101 @@
 .navbar__menu a:hover {
     color: var(--accent-color);
 }
+
+/* =========================
+   REVEAL ANIMATIONS
+========================= */
+
+.reveal{
+    opacity: 0;
+    transform: translateY(60px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.reveal.active{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================
+   LOADER
+========================= */
+
+.loader{
+    position: fixed;
+    inset: 0;
+
+    background: #000;
+
+    z-index: 999999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: opacity 1s ease;
+}
+
+.loader__logo{
+    color: white;
+
+    font-size: 4rem;
+
+    letter-spacing: 12px;
+
+    font-weight: 300;
+}
+
+.loader.hide{
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* ========================================
+   NAVBAR PREMIUM
+======================================== */
+
+.navbar{
+    transition:
+        background .4s ease,
+        backdrop-filter .4s ease,
+        box-shadow .4s ease;
+}
+
+.navbar.scrolled{
+    background: rgba(0,0,0,.72);
+
+    backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.35);
+}
+
+.navbar__logo{
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.navbar__inner{
+    width: min(1180px, 94%);
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.navbar__menu ul{
+    display: flex;
+    align-items: center;
+    gap: 34px;
+}
+
+.navbar__menu a{
+    white-space: nowrap;
+}

@@ -1,274 +1,516 @@
-/**
- * LEONEL TATTOO STUDIO - Core Coreography & Interactive Engine
- * Architecture: Vanilla Enterprise JS
- */
+/* ========================================
+   LEONEL TATTOO STUDIO
+   HOME.JS
+======================================== */
 
-document.addEventListener("DOMContentLoaded", function () {
-    
-    // ==========================================
-    // 1. MOTOR DO CANVAS: LOUSA GEOMÉTRICA INTERATIVA
-    // ==========================================
-    const canvas = document.getElementById('lousaGeometrica');
-    if (canvas) {
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        const maxParticles = 80;
-        const connectionRadius = 140;
-        const mouse = { x: null, y: null, radius: 180 };
 
-        function initCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', initCanvas);
-        initCanvas();
+/* ========================================
+   NAVBAR PREMIUM
+======================================== */
 
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
-        });
+const navbar = document.querySelector('.navbar')
 
-        window.addEventListener('mouseleave', () => {
-            mouse.x = null;
-            mouse.y = null;
-        });
+if (navbar) {
 
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.6;
-                this.vy = (Math.random() - 0.5) * 0.6;
-                this.baseRadius = 2.5;
-            }
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
+    window.addEventListener('scroll', () => {
 
-                // Bounce boundaries
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+        if (window.scrollY > 50) {
 
-                // Mouse interaction physics
-                if (mouse.x !== null && mouse.y !== null) {
-                    let dx = mouse.x - this.x;
-                    let dy = mouse.y - this.y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < mouse.radius) {
-                        let force = (mouse.radius - distance) / mouse.radius;
-                        // Sutil força de atração geométrica para o mouse
-                        this.x += (dx / distance) * force * 0.8;
-                        this.y += (dy / distance) * force * 0.8;
-                    }
-                }
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.baseRadius, 0, Math.PI * 2);
-                ctx.fillStyle = '#e5c475';
-                ctx.fill();
-            }
+            navbar.classList.add('scrolled')
+
+        } else {
+
+            navbar.classList.remove('scrolled')
+
         }
 
-        // População inicial
-        for (let i = 0; i < maxParticles; i++) {
-            particles.push(new Particle());
+    })
+
+}
+
+
+/* ========================================
+   REVEAL ANIMATIONS
+======================================== */
+
+const reveals = document.querySelectorAll('.reveal')
+
+function revealElements() {
+
+    reveals.forEach((element) => {
+
+        const windowHeight = window.innerHeight
+
+        const revealTop =
+            element.getBoundingClientRect().top
+
+        const revealPoint = 100
+
+        if (revealTop < windowHeight - revealPoint) {
+
+            element.classList.add('active')
+
         }
 
-        function animateCanvas() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
+    })
 
-                // Conexões de malha matemática (Geometria Sagrada)
-                for (let j = i + 1; j < particles.length; j++) {
-                    let dx = particles[i].x - particles[j].x;
-                    let dy = particles[i].y - particles[j].y;
-                    let dist = Math.sqrt(dx * dx + dy * dy);
+}
 
-                    if (dist < connectionRadius) {
-                        let alpha = (1 - (dist / connectionRadius)) * 0.22;
-                        ctx.strokeStyle = `rgba(229, 196, 117, ${alpha})`;
-                        ctx.lineWidth = 0.6;
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-            requestAnimationFrame(animateCanvas);
-        }
-        animateCanvas();
+window.addEventListener('scroll', revealElements)
+
+revealElements()
+
+
+/* ========================================
+   MODAL ORÇAMENTO PREMIUM
+======================================== */
+
+const modal =
+    document.getElementById('modalOrcamento')
+
+const btnFecharModal =
+    document.getElementById('btnFecharModal')
+
+const botoesOrcamento =
+    document.querySelectorAll(
+        '.btn-solicitar, .btn-agendar-flutuante, .btn-reserva'
+    )
+if (modal) {
+
+    /* ABRIR MODAL */
+
+    function abrirModal() {
+
+        modal.classList.add('open')
+
+        document.body.style.overflow = 'hidden'
+
     }
 
-    // ==========================================
-    // 2. SISTEMA INTERATIVO DE TABS (SOBRE/PROCESSO)
-    // ==========================================
-    const tabCards = document.querySelectorAll(".processo-card");
-    const tabContents = document.querySelectorAll(".tab-content");
-
-    if (tabCards.length > 0) {
-        tabCards.forEach(card => {
-            card.addEventListener("click", function () {
-                tabCards.forEach(c => c.classList.remove("active"));
-                tabContents.forEach(content => content.classList.remove("active"));
-
-                this.classList.add("active");
-                const targetTab = this.getAttribute("data-tab");
-                const activeContent = document.getElementById(`tab-content-${targetTab}`);
-                if (activeContent) {
-                    activeContent.classList.add("active");
-                }
-            });
-        });
-    }
-
-    // ==========================================
-    // 3. ENGENHARIA DO FORMULÁRIO E MODAL DE ORÇAMENTO
-    // ==========================================
-    const modal = document.getElementById("modalOrcamento");
-    const btnFechar = document.getElementById("btnFecharModal");
-    const formOrcamento = document.getElementById("formOrcamento");
-
-    // Interceptador global de triggers de orçamento
-    document.addEventListener("click", function (e) {
-        if (e.target && (e.target.classList.contains("btn-solicitar") || e.target.closest("#btnFlutuanteAgendar") || e.target.classList.contains("btn-agendar-flutuante"))) {
-            e.preventDefault();
-            if (modal) {
-                modal.classList.add("open");
-                document.body.style.overflow = "hidden";
-            }
-        }
-    });
-
-    if (btnFechar && modal) {
-        btnFechar.addEventListener("click", function () {
-            modal.classList.remove("open");
-            document.body.style.overflow = "auto";
-        });
-
-        window.addEventListener("click", function (e) {
-            if (e.target === modal) {
-                modal.classList.remove("open");
-                document.body.style.overflow = "auto";
-            }
-        });
-    }
-
-    if (formOrcamento) {
-        formOrcamento.addEventListener("submit", function (e) {
-            e.preventDefault();
-            
-            const nome = document.getElementById("nome").value;
-            const estilo = document.getElementById("estilo").value;
-            const local = document.getElementById("local").value;
-            const tamanho = document.getElementById("tamanho").value;
-            const ideia = document.getElementById("ideia").value;
-
-            // Configuração do Telefone Comercial do Cliente (Formato Internacional)
-            const numeroComercial = "5511999999999"; 
-
-            // Payload de Vendas formatada para conversão imediata
-            const textoMensagem = `*SOLICITAÇÃO DE ORÇAMENTO EXCLUSIVO*\n\n` +
-                                 `• *Cliente:* ${nome}\n` +
-                                 `• *Estilo:* ${estilo.toUpperCase()}\n` +
-                                 `• *Anatomia (Local):* ${local}\n` +
-                                 `• *Dimensões Aprox.:* ${tamanho}\n` +
-                                 `• *Briefing do Conceito:* _${ideia}_`;
-
-            const urlWhatsApp = `https://wa.me/${numeroComercial}?text=${encodeURIComponent(textoMensagem)}`;
-            window.open(urlWhatsApp, "_blank");
-            
-            modal.classList.remove("open");
-            document.body.style.overflow = "auto";
-            formOrcamento.reset();
-        });
-    }
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    
-    // 1. Inicializa o Efeito Tilt 3D nos Cards
-    if (typeof VanillaTilt !== 'undefined') {
-        VanillaTilt.init(document.querySelectorAll(".js-tilt"), {
-            max: 10,
-            speed: 400,
-            glare: true,
-            "max-glare": 0.2
-        });
-    }
-
-    // 2. Animação de Scroll Reveal (Surgimento das Seções)
-    function revealAnimation() {
-        const reveals = document.querySelectorAll(".reveal");
-        const windowHeight = window.innerHeight;
-        
-        reveals.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            if (elementTop < windowHeight - 100) {
-                element.classList.add("active");
-            }
-        });
-    }
-    window.addEventListener("scroll", revealAnimation);
-    window.addEventListener("load", revealAnimation);
-
-    // 3. Sistema de Controle de Abas do Processo
-    const cards = document.querySelectorAll(".processo-card");
-    const contents = document.querySelectorAll(".tab-content");
-
-    cards.forEach(card => {
-        card.addEventListener("click", function () {
-            cards.forEach(c => c.classList.remove("active"));
-            contents.forEach(content => content.classList.remove("active"));
-
-            this.classList.add("active");
-            const targetTab = this.getAttribute("data-tab");
-            
-            const activeContent = document.getElementById(`tab-content-${targetTab}`);
-            if (activeContent) {
-                activeContent.classList.add("active");
-            }
-        });
-    });
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    const modal = document.getElementById("modalOrcamento");
-    const btnFechar = document.getElementById("btnFecharModal");
-    const btnFlutuante = document.getElementById("btnFlutuanteAgendar");
-
-    function abrirModal(e) {
-        if (e) e.preventDefault();
-        if (modal) {
-            modal.classList.add("open");
-        }
-    }
+    /* FECHAR MODAL */
 
     function fecharModal() {
-        if (modal) {
-            modal.classList.remove("open");
+
+        modal.classList.remove('open')
+
+        document.body.style.overflow = 'auto'
+
+    }
+
+    /* BOTÕES */
+
+    botoesOrcamento.forEach((botao) => {
+
+        botao.addEventListener('click', (e) => {
+
+            e.preventDefault()
+
+            abrirModal()
+
+        })
+
+    })
+
+    /* FECHAR BOTÃO X */
+
+    if (btnFecharModal) {
+
+        btnFecharModal.addEventListener('click', () => {
+
+            fecharModal()
+
+        })
+
+    }
+
+    /* FECHAR CLICANDO FORA */
+
+    window.addEventListener('click', (e) => {
+
+        if (e.target === modal) {
+
+            fecharModal()
+
+        }
+
+    })
+
+    /* FECHAR COM ESC */
+
+    window.addEventListener('keydown', (e) => {
+
+        if (e.key === 'Escape') {
+
+            fecharModal()
+
+        }
+
+    })
+
+}
+
+
+/* ========================================
+   VANILLA TILT
+======================================== */
+
+const tiltElements = document.querySelectorAll('.js-tilt')
+
+if (tiltElements.length > 0) {
+
+    VanillaTilt.init(tiltElements, {
+
+        max: 10,
+        speed: 400,
+        glare: true,
+        "max-glare": 0.2
+
+    })
+
+}
+
+
+/* ========================================
+   SOBRE TABS INTERATIVAS
+======================================== */
+
+const processoCards =
+    document.querySelectorAll('.processo-card')
+
+const tabContents =
+    document.querySelectorAll('.tab-content')
+
+processoCards.forEach((card) => {
+
+    card.addEventListener('click', () => {
+
+        const tab = card.dataset.tab
+
+        /* REMOVE ACTIVE */
+
+        processoCards.forEach((item) => {
+
+            item.classList.remove('active')
+
+        })
+
+        tabContents.forEach((content) => {
+
+            content.classList.remove('active')
+
+        })
+
+        /* ADICIONA ACTIVE */
+
+        card.classList.add('active')
+
+        const activeContent =
+            document.getElementById(`tab-content-${tab}`)
+
+        if (activeContent) {
+
+            activeContent.classList.add('active')
+
+        }
+
+    })
+
+})
+
+/* ========================================
+   LENIS SMOOTH SCROLL
+======================================== */
+
+const lenis = new Lenis({
+
+    duration: 1.2,
+
+    smoothWheel: true,
+
+    smoothTouch: false
+
+})
+
+function raf(time){
+
+    lenis.raf(time)
+
+    requestAnimationFrame(raf)
+
+}
+
+requestAnimationFrame(raf)
+
+
+
+
+/* ========================================
+   CORES DINÂMICAS
+======================================== */
+
+const gradient =
+    document.querySelector('.bg-gradient')
+
+const colors = [
+
+    'rgba(201,169,110,.12)',
+
+    'rgba(140,110,255,.10)',
+
+    'rgba(90,180,255,.10)',
+
+    'rgba(255,120,120,.08)'
+
+]
+
+let colorIndex = 0
+
+setInterval(() => {
+
+    if(!gradient) return
+
+    colorIndex++
+
+    if(colorIndex >= colors.length){
+
+        colorIndex = 0
+
+    }
+
+    gradient.style.background = `
+        radial-gradient(
+            circle,
+            ${colors[colorIndex]},
+            transparent 70%
+        )
+    `
+
+}, 4000)
+
+/* ========================================
+   LOUSA GEOMÉTRICA INTERATIVA
+======================================== */
+
+const canvas = document.getElementById('lousaCanvas')
+const btnLimparLousa = document.getElementById('btnLimparLousa')
+
+if (canvas) {
+    const ctx = canvas.getContext('2d')
+    let pontos = []
+
+    function ajustarCanvas() {
+        const rect = canvas.getBoundingClientRect()
+        canvas.width = rect.width
+        canvas.height = rect.height
+        desenhar()
+    }
+
+    function desenhar() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+        pontos.forEach((ponto, index) => {
+            for (let i = index + 1; i < pontos.length; i++) {
+                const outro = pontos[i]
+                const distancia = Math.hypot(ponto.x - outro.x, ponto.y - outro.y)
+
+                if (distancia < 150) {
+                    ctx.beginPath()
+                    ctx.moveTo(ponto.x, ponto.y)
+                    ctx.lineTo(outro.x, outro.y)
+                    ctx.strokeStyle = `hsla(${ponto.hue}, 85%, 62%, ${1 - distancia / 150})`
+                    ctx.lineWidth = 1.2
+                    ctx.stroke()
+                }
+            }
+
+            ctx.beginPath()
+            ctx.arc(ponto.x, ponto.y, 3.5, 0, Math.PI * 2)
+            ctx.fillStyle = `hsl(${ponto.hue}, 90%, 65%)`
+            ctx.fill()
+        })
+    }
+
+    function adicionarPonto(e) {
+        const rect = canvas.getBoundingClientRect()
+
+        const x = e.clientX - rect.left
+        const y = e.clientY - rect.top
+        const hue = Math.floor((x / rect.width) * 360)
+
+        pontos.push({ x, y, hue })
+
+        if (pontos.length > 120) {
+            pontos.shift()
+        }
+
+        desenhar()
+    }
+
+    window.addEventListener('load', ajustarCanvas)
+    window.addEventListener('resize', ajustarCanvas)
+
+    canvas.addEventListener('mousemove', adicionarPonto)
+
+    canvas.addEventListener('click', adicionarPonto)
+
+    if (btnLimparLousa) {
+        btnLimparLousa.addEventListener('click', () => {
+            pontos = []
+            desenhar()
+        })
+    }
+}
+
+/* ========================================
+   LOUSA GEOMÉTRICA INTERATIVA
+======================================== */
+
+window.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.getElementById('lousaCanvas')
+    const btnLimpar = document.getElementById('btnLimparLousa')
+
+    if (!canvas) return
+
+    const ctx = canvas.getContext('2d')
+    let desenhando = false
+    let pontos = []
+
+    function ajustarCanvas() {
+        const rect = canvas.getBoundingClientRect()
+
+        canvas.width = rect.width
+        canvas.height = rect.height
+    }
+
+    function pegarPosicao(e) {
+        const rect = canvas.getBoundingClientRect()
+
+        return {
+            x: e.clientX - rect.left,
+            y: e.clientY - rect.top
         }
     }
 
-    if (btnFlutuante) {
-        btnFlutuante.addEventListener("click", abrirModal);
+    function desenharPonto(x, y) {
+        const hue = Math.floor((x / canvas.width) * 360)
+
+        pontos.push({ x, y, hue })
+
+        if (pontos.length > 150) {
+            pontos.shift()
+        }
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+        pontos.forEach((ponto, index) => {
+            ctx.beginPath()
+            ctx.arc(ponto.x, ponto.y, 4, 0, Math.PI * 2)
+            ctx.fillStyle = `hsl(${ponto.hue}, 90%, 65%)`
+            ctx.fill()
+
+            for (let i = index + 1; i < pontos.length; i++) {
+                const outro = pontos[i]
+                const dist = Math.hypot(ponto.x - outro.x, ponto.y - outro.y)
+
+                if (dist < 140) {
+                    ctx.beginPath()
+                    ctx.moveTo(ponto.x, ponto.y)
+                    ctx.lineTo(outro.x, outro.y)
+                    ctx.strokeStyle = `hsla(${ponto.hue}, 90%, 65%, ${1 - dist / 140})`
+                    ctx.lineWidth = 1
+                    ctx.stroke()
+                }
+            }
+        })
     }
 
-    // Escuta cliques em qualquer botão de "Solicitar Orçamento" da página
-    document.addEventListener("click", function (e) {
-        if (e.target && e.target.classList.contains("btn-solicitar")) {
-            e.preventDefault();
-            abrirModal();
-        }
-    });
+    canvas.addEventListener('mousedown', (e) => {
+        desenhando = true
+        const pos = pegarPosicao(e)
+        desenharPonto(pos.x, pos.y)
+    })
 
-    if (btnFechar) btnFechar.addEventListener("click", fecharModal);
-    
-    window.addEventListener("click", function (e) {
-        if (e.target === modal) fecharModal();
-    });
-});
+    canvas.addEventListener('mousemove', (e) => {
+        if (!desenhando) return
+
+        const pos = pegarPosicao(e)
+        desenharPonto(pos.x, pos.y)
+    })
+
+    canvas.addEventListener('mouseup', () => {
+        desenhando = false
+    })
+
+    canvas.addEventListener('mouseleave', () => {
+        desenhando = false
+    })
+
+    if (btnLimpar) {
+        btnLimpar.addEventListener('click', () => {
+            pontos = []
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+        })
+    }
+
+    ajustarCanvas()
+    window.addEventListener('resize', ajustarCanvas)
+})
+/* ========================================
+   FUNDO GEOMÉTRICO GLOBAL INTERATIVO
+======================================== */
+
+const geometricSections = document.querySelectorAll(
+    '.portfolio, .sobre, .pinturas, .loja, .lousa-geometrica, .reserva, .saiba-mais, .localizacao'
+)
+
+geometricSections.forEach((section) => {
+
+    section.addEventListener('mousemove', (e) => {
+
+        const rect = section.getBoundingClientRect()
+
+        const x = ((e.clientX - rect.left) / rect.width) * 100
+        const y = ((e.clientY - rect.top) / rect.height) * 100
+
+        const hue = Math.floor((x + y) * 3)
+
+        section.style.setProperty('--x', `${x}%`)
+        section.style.setProperty('--y', `${y}%`)
+        section.style.setProperty('--geo-color', `${hue}deg`)
+
+    })
+
+    section.addEventListener('mouseleave', () => {
+
+        section.style.setProperty('--x', `50%`)
+        section.style.setProperty('--y', `50%`)
+        section.style.setProperty('--geo-color', `0deg`)
+
+    })
+
+})
+
+/* ========================================
+   SAIBA MAIS INTERATIVO
+======================================== */
+
+const infoCards = document.querySelectorAll('.info-card')
+
+infoCards.forEach((card) => {
+
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect()
+
+        const x = ((e.clientX - rect.left) / rect.width) * 100
+        const y = ((e.clientY - rect.top) / rect.height) * 100
+
+        card.style.setProperty('--x', `${x}%`)
+        card.style.setProperty('--y', `${y}%`)
+    })
+
+    card.addEventListener('click', () => {
+        infoCards.forEach((item) => item.classList.remove('active'))
+        card.classList.add('active')
+    })
+
+})

@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LEONEL | Tattoo Studio</title>
+    <title>
+    
+leoneltattooink
+    </title>
 
     <!-- Fontes Premium -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,49 +23,105 @@
     <link th:href="@{/css/portfolio.css}" rel="stylesheet">
     <link th:href="@{/css/sobre.css}" rel="stylesheet">
     <link th:href="@{/css/loja-telas.css}" rel="stylesheet">
+<link th:href="@{/css/reserva.css}" rel="stylesheet">
+
+
 </head>
 <body>
+
 
     <!-- BARRA DE NAVEGAÇÃO -->
     <header class="navbar" id="navbar">
         <div class="navbar__inner">
-            <div class="navbar__logo">LEONEL</div>
+            
+
+<a href="#hero" class="navbar__logo">LEONELTATTOOINK</a>
+
+
             <nav class="navbar__menu">
                 <ul>
-                    <li><a href="#hero">Lar</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#tatuagens">Tatuagens</a></li>
-                    <li><a href="#pinturas">Pinturas</a></li>
-                    <li><a href="#loja">Loja</a></li>
-                    <li><a href="#sobre">Reserva</a></li>
+            <li><a href="#hero">Lar</a></li>
+<li><a href="#lousa-geometrica">Experiência</a></li>
+<li><a href="#sobre">Sobre</a></li>
+<li><a href="#tatuagens">Tatuagens</a></li>
+<li><a href="#pinturas">Pinturas</a></li>
+<li><a href="#loja">Loja</a></li>
+<li><a href="#reserva">Reserva</a></li>
+<li><a href="#localizacao">Localização</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
-        <!-- SEÇÃO HERO -->
-        <section class="hero" id="hero">
-            <div class="hero__bg"></div>
-            <div class="hero__overlay"></div>
-            <div class="hero__content">
-                <span class="hero__eyebrow">Geometria Sagrada & Realismo</span>
-                <h1 class="hero__title">Arte Exclusiva <em>na Pele</em></h1>
-                <p class="hero__sub">Projetos autorais desenvolvidos sob medida para respeitar a sua anatomia e contar a sua história.</p>
-                <div class="hero__actions">
-                    <a href="#tatuagens" class="btn btn--primary">Ver Portfólio</a>
-                    <a href="#sobre" class="btn btn--ghost">Conhecer Processo</a>
-                </div>
-            </div>
+
+      <!-- SEÇÃO HERO -->
+<section class="hero" id="hero">
+
+    <!-- IMAGEM REAL -->
+    <img
+        src="/images/leonel.PNG"
+        alt="Leonel Tattoo"
+        class="hero__image"
+    >
+
+    <!-- OVERLAY -->
+    <div class="hero__overlay"></div>
+
+    <!-- CONTEÚDO -->
+    <div class="hero__content">
+
+        <span class="hero__eyebrow">
+            Geometria Sagrada & Realismo
+        </span>
+
+        <h1 class="hero__title">
+
+leoneltattooink
             
-            <!-- Redes Sociais Interativas -->
-            <div class="hero__socials">
-                <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://tiktok.com" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                <a href="https://youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            </div>
-        </section>
+            <em>na Pele</em>
+        </h1>
+
+        <p class="hero__sub">
+            Projetos autorais desenvolvidos
+            sob medida para respeitar a sua
+            anatomia e contar a sua história.
+        </p>
+
+        <div class="hero__actions">
+
+            <a href="#tatuagens" class="btn btn--primary">
+                Ver Portfólio
+            </a>
+
+            <a href="#sobre" class="btn btn--ghost">
+                Conhecer Processo
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- REDES -->
+    <div class="hero__socials">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+    <i class="fab fa-facebook-f"></i>
+</a>
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
+
 
         <!-- SEÇÃO PORTFÓLIO (10 CARDS) -->
         <section class="portfolio" id="tatuagens">
@@ -294,60 +353,288 @@
                 </div>
             </div>
         </section>
+
+
+
+
+<section class="lousa-geometrica" id="lousa-geometrica">
+
+    <div class="section-header reveal">
+        <span class="section-label">Experiência Interativa</span>
+        <h2 class="section-title">Explore a Geometria Sagrada</h2>
+    </div>
+
+    <div class="lousa-geometrica__container reveal">
+
+        <div class="lousa-geometrica__texto">
+            <h3>Brinque com formas, linhas e simetria.</h3>
+            <p>
+                Passe o mouse pela lousa e veja como linhas geométricas
+                se conectam, simulando a lógica visual usada em projetos
+                de tatuagem geométrica.
+            </p>
+
+            <button type="button" class="btn-limpar-lousa" id="btnLimparLousa">
+                Limpar Lousa
+            </button>
+        </div>
+
+        <canvas id="lousaCanvas"></canvas>
+
+    </div>
+
+</section>
+
+
+
+
+
+</main>
+           <!-- SEÇÃO RESERVA -->
+        <section class="reserva" id="reserva">
+
+            <div class="section-header reveal">
+
+                <span class="section-label">
+                    Atendimento Exclusivo
+                </span>
+
+                <h2 class="section-title">
+                    Reserve Sua Sessão
+                </h2>
+
+            </div>
+
+            <div class="reserva__container reveal">
+
+                <div class="reserva__content">
+
+                    <h3>
+                        Arte autoral desenvolvida
+                        exclusivamente para você.
+                    </h3>
+
+                    <p>
+                        Cada projeto é pensado
+                        individualmente para respeitar
+                        anatomia, conceito e identidade.
+                    </p>
+
+                    <button
+                        type="button"
+                        class="btn-reserva">
+
+                        Solicitar Orçamento
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+<section class="saiba-mais" id="saiba-mais">
+    <div class="saiba-mais__container reveal">
+
+        <div class="saiba-mais__intro">
+            <span class="section-label">Saiba Mais</span>
+            <h2>Uma Experiência Autoral</h2>
+            <p>
+                Do primeiro conceito ao traço final, cada detalhe é pensado
+                para transformar anatomia, símbolo e intenção em uma arte única.
+            </p>
+        </div>
+
+        <div class="saiba-mais__grid">
+            <article class="info-card active" data-info="01">
+                <span>01</span>
+                <h3>Atendimento Personalizado</h3>
+                <p>Conversa inicial para entender sua ideia, referências, significado e estilo.</p>
+            </article>
+
+            <article class="info-card" data-info="02">
+                <span>02</span>
+                <h3>Projeto Exclusivo</h3>
+                <p>Criação autoral pensada para encaixe anatômico, simetria e composição.</p>
+            </article>
+
+            <article class="info-card" data-info="03">
+                <span>03</span>
+                <h3>Biossegurança</h3>
+                <p>Procedimento com materiais descartáveis, ambiente preparado e rigor técnico.</p>
+            </article>
+        </div>
+
+    </div>
+</section>
+
+
+<section class="localizacao" id="localizacao">
+   <div class="localizacao__info">
+    <h3>Leonel Tattoo Ink</h3>
+
+    <p><strong>Região:</strong> Águas Claras — Brasília/DF</p>
+    <p><strong>Atendimento:</strong> exclusivo com horário marcado.</p>
+    <p><strong>Instagram:</strong> <a href="https://www.instagram.com/leoneltattooink/" target="_blank">@leoneltattooink</a></p>
+    <p><strong>WhatsApp:</strong> número oficial após confirmação do cliente.</p>
+
+    <p>
+        O endereço completo é enviado após o primeiro contato,
+        garantindo privacidade, organização e atendimento personalizado.
+    </p>
+</div>
+        <div class="localizacao__mapa">
+            <iframe
+                src="https://www.google.com/maps?q=%C3%81guas%20Claras%20Bras%C3%ADlia%20DF&output=embed"
+                loading="lazy"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</section>
+        
+<footer class="footer">
+    <div class="footer__brand">
+        <h2>LEONEL</h2>
+        <p>Geometria Sagrada & Realismo</p>
+    </div>
+
+    <div class="footer__links">
+        <a href="#hero">Início</a>
+        <a href="#tatuagens">Portfólio</a>
+        <a href="#reserva">Reserva</a>
+        <a href="#localizacao">Localização</a>
+        <a href="#lgpd">LGPD</a>
+    </div>
+
+    <div class="footer__lgpd" id="lgpd">
+        <p>
+            Os dados enviados neste site são utilizados apenas para retorno de contato,
+            orçamento e agendamento, conforme a Lei Geral de Proteção de Dados — LGPD.
+        </p>
+    </div>
+
+    <p class="footer__copy">
+        © 2026 Leonel Tattoo Ink. Todos os direitos reservados.
+    </p>
+</footer>
+
+
+
     </main>
 
-   <!-- ================================================================= -->
-<!-- MODAL DE ORÇAMENTO HIGH-TICKET (ÚNICO E CORRIGIDO) -->
-<!-- ================================================================= -->
-<div class="modal-orcamento" id="modalOrcamento">
-    <div class="modal-orcamento__content">
-        <button class="modal-orcamento__close" id="btnFecharModal">&times;</button>
-        <h3>Desenvolva Seu Projeto Autoral</h3>
-        <p>Preencha os critérios da sua ideia para iniciarmos o estudo anatômico.</p>
-        
-        <form id="formOrcamento" class="modal-form">
-            <div class="form-group">
-                <label for="nome">Nome Completo *</label>
-                <input type="text" id="nome" required placeholder="Ex: Luiz Silva">
-            </div>
-            
-            <div class="form-group">
-                <label for="estilo">Vertente Artística *</label>
-                <select id="estilo" required>
-                    <option value="">Escolha seu foco...</option>
-                    <option value="Geometria Sagrada">Geometria Sagrada & Pontilhismo</option>
-                    <option value="Realismo Black and Grey">Realismo Black & Grey</option>
-                    <option value="Fechamento Completo">Grandes Projetos / Fechamentos</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="local">Região do Corpo *</label>
-                <input type="text" id="local" required placeholder="Ex: Antebraço externo, Costas">
-            </div>
+    <!-- MODAL -->
+    <div class="modal-orcamento" id="modalOrcamento">
 
-            <div class="form-group">
-                <label for="tamanho">Dimensões Estimadas (em cm) *</label>
-                <input type="text" id="tamanho" required placeholder="Ex: 15cm x 10cm ou Fechamento Total">
-            </div>
-            
-            <div class="form-group">
-                <label for="ideia">Briefing Conceitual (Sua Ideia) *</label>
-                <textarea id="ideia" rows="4" required placeholder="Descreva os elementos que busca expressar..."></textarea>
-            </div>
-            
-            <button type="submit" class="btn-enviar-orcamento">Enviar Proposta ao Tatuador</button>
-        </form>
+        <div class="modal-orcamento__content">
+
+            <button
+                class="modal-orcamento__close"
+                id="btnFecharModal">
+
+                &times;
+
+            </button>
+
+            <h3>
+                Desenvolva Seu Projeto
+            </h3>
+
+            <p>
+                Preencha as informações abaixo
+                para iniciar seu atendimento.
+            </p>
+
+            <form
+                id="formOrcamento"
+                class="modal-form">
+
+                <div class="form-group">
+
+                    <input
+                        type="text"
+                        placeholder="Seu nome"
+                        required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <input
+                        type="tel"
+                        placeholder="WhatsApp"
+                        required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <select required>
+
+                        <option value="">
+                            Estilo desejado
+                        </option>
+
+                        <option>
+                            Geometria Sagrada
+                        </option>
+
+                        <option>
+                            Realismo Blackwork
+                        </option>
+
+                        <option>
+                            Fechamento Completo
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <textarea
+                        rows="5"
+                        placeholder="Descreva sua ideia..."
+                        required></textarea>
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="btn-enviar-orcamento">
+
+                    Enviar Solicitação
+
+                </button>
+
+            </form>
+
+        </div>
+
     </div>
-</div>
 
-<!-- BOTÃO FLUTUANTE DE AGENDAMENTO -->
-<button class="btn-agendar-flutuante" id="btnFlutuanteAgendar">
-    <i class="fab fa-whatsapp"></i>
-    <span>Solicitar Orçamento</span>
-</button>
-    <!-- Bibliotecas Externas -->
+    <!-- BOTÃO FLUTUANTE -->
+    <button
+        class="btn-agendar-flutuante"
+        id="btnFlutuanteAgendar">
+
+        <i class="fab fa-whatsapp"></i>
+
+        <span>
+            Solicitar Orçamento
+        </span>
+
+    </button>
+
+    <!-- SCRIPTS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+
     <script th:src="@{/js/home.js}"></script>
+<script th:src="@{/js/lousa.js}"></script>
+
 </body>
 </html>

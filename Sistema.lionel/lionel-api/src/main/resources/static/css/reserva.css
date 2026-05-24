@@ -1,0 +1,258 @@
+/* ========================================
+   RESERVA
+======================================== */
+
+.reserva{
+
+    padding: 120px 8%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #0a0a0a,
+            #111
+        );
+
+}
+
+.reserva__container{
+
+    margin-top: 60px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 60px;
+
+    align-items: center;
+
+}
+
+.reserva__info h3{
+
+    font-size: 2.5rem;
+
+    margin-bottom: 20px;
+
+    line-height: 1.2;
+
+}
+
+.reserva__info p{
+
+    color: rgba(255,255,255,.7);
+
+    margin-bottom: 40px;
+
+    line-height: 1.8;
+
+}
+
+.reserva__beneficios{
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+
+}
+
+.beneficio-item{
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+}
+
+.beneficio-item i{
+
+    color: #c9a96e;
+
+}
+
+.reserva__form{
+
+    background: rgba(255,255,255,.03);
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    padding: 40px;
+
+    border-radius: 24px;
+
+    backdrop-filter: blur(10px);
+
+}
+
+.form-group{
+
+    margin-bottom: 20px;
+
+}
+
+.reserva__form input,
+.reserva__form textarea,
+.reserva__form select{
+
+    width: 100%;
+
+    background: #111;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    padding: 16px;
+
+    border-radius: 12px;
+
+    color: white;
+
+    font-size: 1rem;
+
+    outline: none;
+
+}
+
+.reserva__form textarea{
+
+    resize: none;
+
+}
+
+.btn-reserva{
+
+    width: 100%;
+
+    padding: 18px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background: #c9a96e;
+
+    color: #000;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .3s ease;
+
+}
+
+.btn-reserva:hover{
+
+    transform: translateY(-3px);
+
+}
+
+/* RESPONSIVO */
+
+@media(max-width: 900px){
+
+    .reserva__container{
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+/* ========================================
+   RESERVA
+======================================== */
+
+.reserva{
+
+    padding: 140px 8%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #0a0a0a,
+            #111
+        );
+
+}
+
+.reserva__container{
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+}
+
+.reserva__content{
+
+    max-width: 700px;
+
+}
+
+.reserva__content h3{
+
+    font-size: 3rem;
+
+    line-height: 1.2;
+
+    margin-bottom: 25px;
+
+}
+
+.reserva__content p{
+
+    color: rgba(255,255,255,.7);
+
+    line-height: 1.8;
+
+    margin-bottom: 40px;
+
+}
+
+.btn-reserva{
+
+    background: #c9a96e;
+
+    color: #000;
+
+    border: none;
+
+    padding: 18px 40px;
+
+    border-radius: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .3s ease;
+
+}
+
+.btn-reserva:hover{
+
+    transform: translateY(-4px);
+
+}
+
+@media(max-width: 768px){
+
+    .reserva__content h3{
+
+        font-size: 2rem;
+
+    }
+
+}

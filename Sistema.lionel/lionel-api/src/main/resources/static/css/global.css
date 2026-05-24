@@ -1,84 +1,6 @@
-/* Reset & Variáveis Globais */
-:root {
-    --bg-color: #0a0a0a;
-    --card-bg: #111111;
-    --card-accent: #161616;
-    --border-color: #222222;
-    --text-primary: #ffffff;
-    --text-secondary: #a0a0a0;
-    --text-muted: #888888;
-    --accent-color: #e5c475; /* Dourado Premium */
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background-color: var(--bg-color) !important;
-    color: var(--text-primary);
-    font-family: 'Montserrat', sans-serif;
-    overflow-x: hidden;
-}
-
-/* Classes Utilitárias Globais */
-.section-header {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.section-label {
-    font-size: 11px;
-    letter-spacing: 3px;
-    color: var(--accent-color);
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 8px;
-}
-
-.section-title {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 38px;
-    font-weight: 300;
-    color: var(--text-primary) !important;
-}
-
-/* Efeito de Revelação Suave (Scroll Reveal) */
-.reveal {
-    position: relative;
-    transform: translateY(50px);
-    opacity: 0;
-    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.reveal.active {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-#lousaGeometrica {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 0; /* Fica atrás de tudo */
-    pointer-events: none; /* Garante que o usuário consiga clicar nos botões e links normalmente */
-    background-color: #0a0a0a;
-}
-
-/* Garante que as seções fiquem transparentes para revelar o canvas geométrico ao fundo */
-section, .categorias, .produtos, .sobre, .pinturas, .loja {
-    background-color: transparent !important;
-    position: relative;
-    z-index: 1;
-}
+/* ========================================
+   RESET & VARIÁVEIS
+======================================== */
 
 :root {
     --bg-color: #0a0a0a;
@@ -91,34 +13,69 @@ section, .categorias, .produtos, .sobre, .pinturas, .loja {
     --accent-color: #e5c475;
 }
 
-* {
+/* ========================================
+   RESET
+======================================== */
+
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html {
+html{
     scroll-behavior: smooth;
 }
 
-body {
-    background-color: var(--bg-color) !important;
+body{
+    background-color: var(--bg-color);
     color: var(--text-primary);
     font-family: 'Montserrat', sans-serif;
     overflow-x: hidden;
 }
 
-section {
-    padding: 100px 0;
-    background-color: var(--bg-color);
+/* ========================================
+   MAIN
+======================================== */
+
+main{
+    position: relative;
+    z-index: 1;
 }
 
-.section-header {
+/* ========================================
+   SECTIONS
+======================================== */
+
+section{
+    position: relative;
+    padding: 80px 0;
+}
+
+.hero{
+    padding: 0;
+}
+
+/* OUTRAS SECTIONS */
+
+.portfolio,
+.sobre,
+.pinturas,
+.loja,
+.reserva{
+    background-color: #0a0a0a;
+}
+
+/* ========================================
+   TÍTULOS GLOBAIS
+======================================== */
+
+.section-header{
     text-align: center;
     margin-bottom: 60px;
 }
 
-.section-label {
+.section-label{
     font-size: 11px;
     letter-spacing: 3px;
     color: var(--accent-color);
@@ -127,49 +84,641 @@ section {
     margin-bottom: 10px;
 }
 
-.section-title {
-    font-family: 'Cormorant Garamond', Georgia, serif;
+.section-title{
+    font-family: 'Cormorant Garamond', serif;
     font-size: 42px;
     font-weight: 300;
-    color: var(--text-primary) !important;
+    color: #fff;
 }
 
-/* Scroll Reveal */
-.reveal {
-    position: relative;
-    transform: translateY(40px);
+/* ========================================
+   REVEAL
+======================================== */
+
+.reveal{
     opacity: 0;
-    transition: all 0.8s ease;
+    transform: translateY(40px);
+    transition: all .8s ease;
 }
 
-.reveal.active {
-    transform: translateY(0);
+.reveal.active{
     opacity: 1;
+    transform: translateY(0);
 }
 
-/* Footer */
-.footer {
+/* ========================================
+   MODAL
+======================================== */
+
+.modal-orcamento{
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0,.75);
+
+    backdrop-filter: blur(8px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: .4s ease;
+
+    z-index: 99999;
+}
+
+.modal-orcamento.open{
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-orcamento__content{
+    width: 90%;
+    max-width: 650px;
+
+    background: #111;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 24px;
+
+    padding: 40px;
+
+    position: relative;
+
+    transform: translateY(40px);
+
+    transition: .4s ease;
+}
+
+.modal-orcamento.open .modal-orcamento__content{
+    transform: translateY(0);
+}
+
+.modal-orcamento__close{
+    position: absolute;
+
+    top: 20px;
+    right: 20px;
+
+    background: none;
+    border: none;
+
+    color: white;
+
+    font-size: 2rem;
+
+    cursor: pointer;
+}
+
+/* ========================================
+   FOOTER
+======================================== */
+
+.footer{
     background-color: #050505;
     border-top: 1px solid var(--border-color);
     padding: 60px 0;
     text-align: center;
 }
 
-.footer__brand h2 {
-    font-family: 'Cormorant Garamond', Georgia, serif;
+.footer__brand h2{
+    font-family: 'Cormorant Garamond', serif;
     font-size: 32px;
     letter-spacing: 4px;
     color: #fff;
 }
 
-.footer__brand p {
+.footer__brand p{
     color: var(--accent-color);
     font-size: 12px;
     margin-top: 5px;
 }
 
-.footer__copy {
+.footer__copy{
     margin-top: 30px;
     font-size: 12px;
     color: var(--text-muted);
+}
+
+.saiba-mais,
+/* ========================================
+   LOCALIZAÇÃO PREMIUM
+======================================== */
+
+.localizacao__container{
+    width: min(1100px, 90%);
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: .9fr 1.3fr;
+    gap: 28px;
+    align-items: stretch;
+}
+
+.localizacao__info,
+.localizacao__mapa{
+    position: relative;
+    background: linear-gradient(145deg, #111, #080808);
+    border: 1px solid rgba(229,196,117,.22);
+    padding: 34px;
+    overflow: hidden;
+}
+
+.localizacao__info::before,
+.localizacao__mapa::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(229,196,117,.16), transparent 35%);
+    opacity: 0;
+    transition: opacity .3s ease;
+    pointer-events: none;
+}
+
+.localizacao__info:hover::before,
+.localizacao__mapa:hover::before{
+    opacity: 1;
+}
+
+.localizacao__info h3{
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 300;
+    color: #e5c475;
+    margin-bottom: 22px;
+}
+
+.localizacao__info p{
+    color: rgba(255,255,255,.78);
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 10px;
+}
+
+.localizacao__info strong{
+    color: #fff;
+    font-weight: 700;
+}
+
+.localizacao__info a{
+    color: #e5c475;
+    text-decoration: none;
+}
+
+.localizacao__mapa{
+    padding: 12px;
+}
+
+.localizacao__mapa iframe{
+    width: 100%;
+    height: 360px;
+    display: block;
+    filter: grayscale(1) contrast(1.05) brightness(.85);
+    transition: .4s ease;
+}
+
+.localizacao__mapa:hover iframe{
+    filter: grayscale(.2) contrast(1.05) brightness(.95);
+}
+
+@media(max-width: 768px){
+    .localizacao__container{
+        grid-template-columns: 1fr;
+    }
+}
+
+.footer{
+    background: #050505;
+    border-top: 1px solid rgba(229,196,117,.18);
+    padding: 60px 8%;
+    text-align: center;
+}
+
+.footer__links{
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin: 25px 0;
+    flex-wrap: wrap;
+}
+
+.footer__links a{
+    color: #e5c475;
+    text-decoration: none;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.footer__lgpd{
+    max-width: 800px;
+    margin: 0 auto 25px;
+    color: #aaa;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+
+
+
+.info-card,
+.localizacao__info,
+.localizacao__mapa{
+    background: #111;
+    border: 1px solid rgba(229,196,117,.18);
+    padding: 24px;
+}
+
+.localizacao__container{
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 24px;
+    align-items: stretch;
+}
+
+.localizacao__mapa iframe{
+    width: 100%;
+    height: 320px;
+    display: block;
+}
+
+.footer{
+    padding: 50px 8%;
+}
+
+
+
+
+/* ========================================
+   LOUSA GEOMÉTRICA
+======================================== */
+
+.lousa-geometrica{
+    background: #070707;
+    padding: 90px 0;
+}
+
+.lousa-geometrica__container{
+    width: min(1100px, 90%);
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 40px;
+
+    align-items: center;
+}
+
+.lousa-geometrica__texto{
+    background: #111;
+    border: 1px solid rgba(229,196,117,.18);
+    padding: 32px;
+}
+
+.lousa-geometrica__texto h3{
+    font-size: 28px;
+    margin-bottom: 18px;
+}
+
+.lousa-geometrica__texto p{
+    color: #aaa;
+    line-height: 1.8;
+    margin-bottom: 28px;
+}
+
+.btn-limpar-lousa{
+    background: #e5c475;
+    color: #000;
+    border: none;
+    padding: 14px 28px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#lousaCanvas{
+    width: 100%;
+    height: 420px;
+    display: block;
+    position: relative;
+    z-index: 999;
+    cursor: crosshair;
+    pointer-events: auto;
+
+    background: rgba(10,10,10,.82);
+    border: 1px solid rgba(229,196,117,.35);
+}
+@media(max-width: 768px){
+    .lousa-geometrica__container{
+        grid-template-columns: 1fr;
+    }
+
+    #lousaCanvas{
+        height: 320px;
+    }
+}
+/* ========================================
+   FUNDO GEOMETRIA SAGRADA NAS SEÇÕES
+======================================== */
+
+.sobre,
+.pinturas,
+.loja,
+.lousa-geometrica,
+.reserva,
+.localizacao{
+    position: relative;
+    overflow: hidden;
+
+    background-color: #070707;
+}
+
+/* textura geométrica */
+.sobre::before,
+.pinturas::before,
+.loja::before,
+.lousa-geometrica::before,
+.reserva::before,
+.localizacao::before{
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background-image: url('/images/geometria-bg.png');
+    background-size: 520px;
+    background-repeat: repeat;
+    background-position: center;
+
+    opacity: .16;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    animation: geometriaMove 35s linear infinite;
+}
+
+/* degradê escuro por cima para não atrapalhar leitura */
+.sobre::after,
+.pinturas::after,
+.loja::after,
+.lousa-geometrica::after,
+.reserva::after,
+.localizacao::after{
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(7,7,7,.92),
+            rgba(7,7,7,.82),
+            rgba(7,7,7,.94)
+        );
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+/* coloca conteúdo acima do fundo */
+.sobre > *,
+.pinturas > *,
+.loja > *,
+.lousa-geometrica > *,
+.reserva > *,
+.localizacao > *{
+    position: relative;
+    z-index: 2;
+}
+
+/* animação sutil */
+@keyframes geometriaMove{
+    from{
+        background-position: 0 0;
+    }
+
+    to{
+        background-position: 520px 520px;
+    }
+}
+
+/* ========================================
+   FUNDO GEOMÉTRICO GLOBAL — PORTFÓLIO PARA BAIXO
+======================================== */
+
+.portfolio,
+.sobre,
+.pinturas,
+.loja,
+.lousa-geometrica,
+.reserva,
+.saiba-mais,
+.localizacao{
+    position: relative;
+    overflow: hidden;
+    background: #050505 !important;
+}
+
+.portfolio::before,
+.sobre::before,
+.pinturas::before,
+.loja::before,
+.lousa-geometrica::before,
+.reserva::before,
+.saiba-mais::before,
+.localizacao::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image: url('/images/geometria-bg.png?v=5');
+    background-size: 360px;
+    background-repeat: repeat;
+    background-position: center;
+
+    opacity: .72;
+
+    filter:
+        hue-rotate(var(--geo-color, 0deg))
+        saturate(2.2)
+        brightness(1.35)
+        contrast(1.25);
+
+    animation:
+        geoMove 24s linear infinite,
+        geoPulse 4s ease-in-out infinite;
+
+    z-index: 0;
+    pointer-events: none;
+}
+
+.portfolio::after,
+.sobre::after,
+.pinturas::after,
+.loja::after,
+.lousa-geometrica::after,
+.reserva::after,
+.saiba-mais::after,
+.localizacao::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at var(--x, 50%) var(--y, 50%),
+            rgba(229,196,117,.28),
+            rgba(0,0,0,.30) 30%,
+            rgba(0,0,0,.72) 100%
+        );
+
+    z-index: 1;
+    pointer-events: none;
+}
+
+.portfolio > *,
+.sobre > *,
+.pinturas > *,
+.loja > *,
+.lousa-geometrica > *,
+.reserva > *,
+.saiba-mais > *,
+.localizacao > *{
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes geoMove{
+    from{
+        background-position: 0 0;
+    }
+
+    to{
+        background-position: 360px 360px;
+    }
+}
+
+@keyframes geoPulse{
+    0%, 100%{
+        opacity: .55;
+    }
+
+    50%{
+        opacity: .85;
+    }
+}
+
+//* ========================================
+   FORÇA CORREÇÃO SAIBA MAIS
+======================================== */
+
+section.saiba-mais{
+    width: 100% !important;
+    padding: 100px 0 !important;
+}
+
+section.saiba-mais .saiba-mais__container{
+    width: min(1280px, 92vw) !important;
+    max-width: 1280px !important;
+    margin: 0 auto !important;
+
+    display: grid !important;
+    grid-template-columns: 380px 1fr !important;
+    gap: 60px !important;
+    align-items: center !important;
+}
+
+section.saiba-mais .saiba-mais__grid{
+    width: 100% !important;
+
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(220px, 1fr)) !important;
+    gap: 24px !important;
+}
+
+section.saiba-mais .info-card{
+    width: auto !important;
+    min-width: 0 !important;
+    min-height: 260px !important;
+
+    padding: 32px 26px !important;
+}
+
+section.saiba-mais .info-card h3{
+    font-size: 24px !important;
+    line-height: 1.12 !important;
+}
+
+section.saiba-mais .info-card p{
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+}
+
+@media(max-width: 900px){
+    section.saiba-mais .saiba-mais__container{
+        grid-template-columns: 1fr !important;
+    }
+
+    section.saiba-mais .saiba-mais__grid{
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* ========================================
+   AJUSTE FINAL SAIBA MAIS
+======================================== */
+
+section.saiba-mais{
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow: hidden !important;
+    padding: 90px 0 !important;
+}
+
+section.saiba-mais .saiba-mais__container{
+    width: min(1120px, 90vw) !important;
+    max-width: 1120px !important;
+    margin: 0 auto !important;
+
+    display: grid !important;
+    grid-template-columns: 320px 1fr !important;
+    gap: 40px !important;
+}
+
+section.saiba-mais .saiba-mais__grid{
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 18px !important;
+}
+
+section.saiba-mais .info-card{
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    padding: 28px 22px !important;
+}
+
+section.saiba-mais .info-card h3{
+    font-size: 21px !important;
+}
+
+section.saiba-mais .info-card p{
+    font-size: 14px !important;
+}
+
+@media(max-width: 950px){
+    section.saiba-mais .saiba-mais__container{
+        grid-template-columns: 1fr !important;
+    }
+
+    section.saiba-mais .saiba-mais__grid{
+        grid-template-columns: 1fr !important;
+    }
 }

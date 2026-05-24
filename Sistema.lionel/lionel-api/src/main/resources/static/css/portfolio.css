@@ -79,3 +79,40 @@
     background: var(--accent-color);
     color: #000;
 }
+
+.prod-card{
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
+}
+
+.prod-card:hover{
+    transform:
+        translateY(-12px)
+        scale(1.02);
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,.35);
+}
+
+/* ========================================
+   PREMIUM HOVER
+======================================== */
+
+.prod-card{
+
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
+
+}
+
+.prod-card:hover{
+
+    transform:
+        translateY(-10px);
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,.35);
+
+}

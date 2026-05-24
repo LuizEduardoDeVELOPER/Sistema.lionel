@@ -52,90 +52,208 @@
     background: var(--accent-color);
     color: #000;
 }
-/* ================================================================= */
-/* CONTROLE RESTRITO DO MODAL DE ORÇAMENTO */
-/* ================================================================= */
-.modal-orcamento {
-    position: fixed !important;
-    inset: 0 !important;
-    background-color: rgba(5, 5, 5, 0.95) !important;
-    backdrop-filter: blur(10px);
-    z-index: 9999 !important; /* Fica acima de tudo absolutamente */
-    display: none; /* FORÇA A FICAR OCULTO POR PADRÃO */
+
+
+/* ========================================
+   MODAL PREMIUM
+======================================== */
+
+.modal-orcamento{
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,.82);
+
+    backdrop-filter: blur(8px);
+
+    display: flex;
+
     align-items: center;
+
     justify-content: center;
+
+    padding: 20px;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: .4s ease;
+
+    z-index: 9999;
+
 }
 
-/* Classe injetada pelo JavaScript para abrir */
-.modal-orcamento.open {
-    display: flex !important;
+.modal-orcamento.open{
+
+    opacity: 1;
+
+    visibility: visible;
+
 }
 
-.modal-orcamento__content {
-    background-color: #121212 !important;
-    border: 1px solid #2a2a2a !important;
-    padding: 40px !important;
-    border-radius: 4px !important;
-    max-width: 500px;
-    width: 90%;
-    position: relative;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-}
+.modal-orcamento__content{
 
-.modal-orcamento__close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: none;
-    border: none;
-    color: #888;
-    font-size: 30px;
-    cursor: pointer;
-}
-
-.modal-orcamento__close:hover { color: #e5c475; }
-
-.modal-orcamento h3 { 
-    font-family: 'Cormorant Garamond', Georgia, serif; 
-    font-size: 26px; 
-    color: #e5c475 !important; 
-    margin-bottom: 8px;
-}
-
-.modal-orcamento p { color: #a0a0a0 !important; font-size: 13px; margin-bottom: 24px; }
-
-.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; text-align: left; }
-.form-group label { font-size: 11px; text-transform: uppercase; color: #ccc; letter-spacing: 1px; }
-
-.form-group input, .form-group select, .form-group textarea {
-    background-color: #1a1a1a !important;
-    border: 1px solid #333 !important;
-    padding: 12px !important;
-    color: #fff !important;
-    font-family: inherit;
-    font-size: 14px;
-}
-
-.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-    border-color: #e5c475 !important;
-    outline: none;
-}
-
-.btn-enviar-orcamento {
     width: 100%;
-    background-color: #e5c475 !important;
-    color: #000 !important;
-    border: none;
-    padding: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 12px;
-    cursor: pointer;
-    letter-spacing: 1px;
-    transition: background-color 0.3s;
+
+    max-width: 650px;
+
+    background: #111;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    border-radius: 28px;
+
+    padding: 50px;
+
+    position: relative;
+
+    transform: translateY(40px);
+
+    transition: .4s ease;
+
 }
 
-.btn-enviar-orcamento:hover { background-color: #fff !important; }
+.modal-orcamento.open
+.modal-orcamento__content{
+
+    transform: translateY(0);
+
+}
+
+.modal-orcamento__content h3{
+
+    font-size: 2rem;
+
+    margin-bottom: 12px;
+
+}
+
+.modal-orcamento__content p{
+
+    color: rgba(255,255,255,.65);
+
+    margin-bottom: 35px;
+
+    line-height: 1.7;
+
+}
+
+.modal-orcamento__close{
+
+    position: absolute;
+
+    top: 18px;
+
+    right: 20px;
+
+    background: transparent;
+
+    border: none;
+
+    color: white;
+
+    font-size: 32px;
+
+    cursor: pointer;
+
+}
+
+.modal-form{
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+}
+
+.form-group{
+
+    width: 100%;
+
+}
+
+.modal-form input,
+.modal-form textarea,
+.modal-form select{
+
+    width: 100%;
+
+    background: #0a0a0a;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    border-radius: 14px;
+
+    padding: 16px;
+
+    color: white;
+
+    outline: none;
+
+    transition: .3s ease;
+
+}
+
+.modal-form input:focus,
+.modal-form textarea:focus,
+.modal-form select:focus{
+
+    border-color: #c9a96e;
+
+}
+
+.modal-form textarea{
+
+    resize: none;
+
+}
+
+.btn-enviar-orcamento{
+
+    border: none;
+
+    padding: 18px;
+
+    border-radius: 14px;
+
+    background: #c9a96e;
+
+    color: #000;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .3s ease;
+
+}
+
+.btn-enviar-orcamento:hover{
+
+    transform: translateY(-3px);
+
+}
+
+/* RESPONSIVO */
+
+@media(max-width: 768px){
+
+    .modal-orcamento__content{
+
+        padding: 35px 25px;
+
+    }
+
+}
+
+
 
 /* BOTÃO FLUTUANTE */
 .btn-agendar-flutuante {

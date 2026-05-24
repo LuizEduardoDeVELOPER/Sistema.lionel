@@ -1,147 +1,242 @@
-/* Seção Principal (Hero) */
-.hero {
+/* ========================================
+   HERO SECTION
+======================================== */
+
+.hero{
     position: relative;
-    height: 100vh;
+    min-height: 100vh;
+    overflow: hidden;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+
+    background: #000;
 }
 
-.hero__bg {
+/* IMAGEM */
+
+.hero__image{
     position: absolute;
-    inset: 0;
-    /* Substituição da imagem antiga pela leonel.PNG */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.75)), url('/images/leonel.PNG');
-    
-    /* PROPRIEDADES DE RESPONSIVIDADE CRUCIAL: */
-    background-size: cover;      /* Força a imagem a preencher toda a tela sem distorcer a proporção */
-    background-position: center;  /* Centraliza a imagem na tela por padrão */
-    background-repeat: no-repeat; /* Evita que a imagem fique se repetindo em telas muito grandes */
+    top: 50%;
+    left: 50%;
+
+    width: 100%;
+    height: auto;
+
+    transform: translate(-50%, -50%);
+
+    object-fit: contain;
+
     z-index: 1;
 }
 
-.hero__overlay {
+/* OVERLAY */
+
+.hero__overlay{
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center, transparent 20%, #0a0a0a 90%);
+
+    background: rgba(0,0,0,.45);
+
     z-index: 2;
 }
 
-.hero__content {
+/* CONTEÚDO */
+
+.hero__content{
     position: relative;
-    z-index: 3;
+    z-index: 5;
+
     text-align: center;
+
     max-width: 800px;
+
     padding: 0 20px;
 }
 
-.hero__eyebrow {
-    font-size: 12px;
+.hero__eyebrow{
+    color: #e5c475;
     letter-spacing: 4px;
-    color: var(--accent-color);
-    text-transform: uppercase;
+    font-size: 12px;
     display: block;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
 
-.hero__title {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 64px;
-    font-weight: 300;
-    line-height: 1.1;
-    margin-bottom: 24px;
-    letter-spacing: 2px;
+.hero__title{
+    font-size: 72px;
+    color: #fff;
+    margin-bottom: 20px;
 }
 
-.hero__title em {
+.hero__title em{
+    color: #e5c475;
     font-style: normal;
-    color: var(--accent-color);
 }
 
-.hero__sub {
-    font-size: 16px;
-    color: var(--text-secondary);
-    line-height: 1.6;
+.hero__sub{
+    color: rgba(255,255,255,.8);
+    line-height: 1.8;
     margin-bottom: 40px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
-/* Botões de Ação */
-.hero__actions {
+/* BOTÕES */
+
+.hero__actions{
     display: flex;
+    gap: 20px;
     justify-content: center;
-    gap: 20px;
 }
 
-.btn {
-    display: inline-block;
+.btn{
     padding: 14px 28px;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
     text-decoration: none;
-    border-radius: 2px;
-    transition: all 0.3s ease;
 }
 
-.btn--primary {
-    background-color: var(--accent-color);
-    color: #000000;
+.btn--primary{
+    background: #e5c475;
+    color: #000;
 }
 
-.btn--primary:hover {
-    background-color: #ffffff;
-    transform: translateY(-2px);
+.btn--ghost{
+    border: 1px solid rgba(255,255,255,.3);
+    color: #fff;
 }
 
-.btn--ghost {
-    border: 1px solid var(--text-primary);
-    color: var(--text-primary);
-}
+/* REDES */
 
-.btn--ghost:hover {
-    border-color: var(--accent-color);
-    color: var(--accent-color);
-    transform: translateY(-2px);
-}
-
-/* Container das Redes Sociais */
-.hero__socials {
+.hero__socials{
     position: absolute;
+
+    left: 40px;
     bottom: 40px;
-    left: 48px;
+
+    z-index: 5;
+
     display: flex;
-    gap: 20px;
-    z-index: 3;
+    gap: 16px;
 }
 
-/* Estilo Base de Cada Ícone */
-.hero__socials a {
-    color: rgba(255, 255, 255, 0.4); /* Começa apagado e discreto */
-    font-size: 18px;
+.hero__socials a{
+    color: #fff;
+    font-size: 20px;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+    .hero__title{
+        font-size: 42px;
+    }
+
+    .hero__actions{
+        flex-direction: column;
+    }
+
+}
+/* ========================================
+   BOTÕES
+======================================== */
+
+.hero__actions{
     display: flex;
+
+    justify-content: center;
+
+    gap: 20px;
+}
+
+.btn{
+    padding: 14px 28px;
+
+    text-decoration: none;
+
+    letter-spacing: 2px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    transition: .3s ease;
+}
+
+.btn--primary{
+    background: var(--accent-color);
+
+    color: #000;
+}
+
+.btn--ghost{
+    border: 1px solid rgba(255,255,255,.2);
+
+    color: #fff;
+}
+
+/* ========================================
+   REDES SOCIAIS
+======================================== */
+
+.hero__socials{
+    position: absolute;
+
+    left: 40px;
+    bottom: 40px;
+
+    display: flex;
+
+    gap: 16px;
+
+    z-index: 10;
+}
+
+.hero__socials a{
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    display: flex;
+
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    text-decoration: none;
-    
-    /* Transição suave para todas as propriedades */
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    color: rgba(255,255,255,.6);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    background: rgba(255,255,255,.03);
 }
 
-/* Efeito Interativo Realista ao Passar o Mouse (Hover) */
-.hero__socials a:hover {
-    color: var(--accent-color); /* Acende no tom dourado */
-    background-color: rgba(229, 196, 117, 0.08); /* Fundo sutil dourado translúcido */
-    border-color: var(--accent-color); /* Borda acende em dourado */
-    transform: translateY(-5px); /* Flutua sutilmente para cima */
-    box-shadow: 0 10px 20px rgba(229, 196, 117, 0.15); /* Sombra suave de brilho */
+/* ========================================
+   REMOVE GEOMETRIAS
+======================================== */
+
+.hero::before,
+.hero::after,
+.hero__geometry{
+    display: none;
+}
+
+/* ========================================
+   RESPONSIVO
+======================================== */
+
+@media(max-width: 768px){
+
+    .hero__title{
+        font-size: 42px;
+    }
+
+    .hero__actions{
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    .hero__socials{
+        left: 50%;
+
+        transform: translateX(-50%);
+    }
 }
