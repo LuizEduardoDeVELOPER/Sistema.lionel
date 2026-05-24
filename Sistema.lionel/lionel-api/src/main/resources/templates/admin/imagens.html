@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Imagens | Leonel Admin</title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body class="admin-body">
+
+    <aside class="admin-sidebar">
+
+        <h2>
+            LEONEL
+            <span>ADMIN</span>
+        </h2>
+
+        <a href="/admin/dashboard">
+            Dashboard
+        </a>
+
+        <a href="/admin/imagens" class="active">
+            Imagens
+        </a>
+
+        <a href="/admin/demandas">
+            Demandas
+        </a>
+
+        <div class="sidebar-bottom">
+            <a href="/">
+                Ver Site
+            </a>
+
+            <a href="/admin/login">
+                Sair
+            </a>
+        </div>
+
+    </aside>
+
+    <main class="admin-main light">
+
+        <div class="admin-topbar">
+
+            <div>
+                <h1>
+                    Imagens do Site
+                </h1>
+
+                <p>
+                    Gerencie fotos do portfólio institucional.
+                </p>
+            </div>
+
+            <button
+                class="btn-new"
+                id="btnAbrirModal">
+
+                + Nova Imagem
+
+            </button>
+
+        </div>
+
+        <section class="admin-panel">
+
+            <div class="panel-header">
+
+                <h2>
+                    Catálogo de Imagens
+                </h2>
+
+                <div class="filters">
+
+                    <input
+                        type="text"
+                        id="buscarImagem"
+                        placeholder="Buscar imagem...">
+
+                    <select id="filtroCategoria">
+                        <option value="">
+                            Todas categorias
+                        </option>
+
+                        <option value="Geometria">
+                            Geometria
+                        </option>
+
+                        <option value="Realismo">
+                            Realismo
+                        </option>
+
+                        <option value="Pintura">
+                            Pintura
+                        </option>
+
+                        <option value="Loja">
+                            Loja
+                        </option>
+                    </select>
+
+                </div>
+
+            </div>
+
+            <table class="admin-products-table">
+
+                <thead>
+                    <tr>
+                        <th>Imagem</th>
+                        <th>Título</th>
+                        <th>Categoria</th>
+                        <th>Descrição</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tabelaImagens">
+
+                    <tr data-id="1">
+                        <td>
+                            <img
+                                src="/images/braco-geometria.jpeg"
+                                class="table-img"
+                                alt="Geometria no Braço">
+                        </td>
+
+                        <td>
+                            Geometria no Braço
+                        </td>
+
+                        <td>
+                            <span class="tag">
+                                Geometria
+                            </span>
+                        </td>
+
+                        <td>
+                            Linhas precisas e encaixe anatômico.
+                        </td>
+
+                        <td>
+                            <span class="status on">
+                                Publicado
+                            </span>
+                        </td>
+
+                        <td>
+                            <button class="icon-btn editar">
+                                ✎
+                            </button>
+
+                            <button class="icon-btn deletar">
+                                🗑
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr data-id="2">
+                        <td>
+                            <img
+                                src="/images/costa-realismo.jpeg"
+                                class="table-img"
+                                alt="Projeto Costas">
+                        </td>
+
+                        <td>
+                            Projeto Costas
+                        </td>
+
+                        <td>
+                            <span class="tag">
+                                Realismo
+                            </span>
+                        </td>
+
+                        <td>
+                            Grande escala rico em detalhes.
+                        </td>
+
+                        <td>
+                            <span class="status on">
+                                Publicado
+                            </span>
+                        </td>
+
+                        <td>
+                            <button class="icon-btn editar">
+                                ✎
+                            </button>
+
+                            <button class="icon-btn deletar">
+                                🗑
+                            </button>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+    <div class="admin-modal" id="modalImagem">
+
+        <div class="admin-modal-content">
+
+            <button
+                class="modal-close"
+                id="btnFecharModal">
+
+                &times;
+
+            </button>
+
+            <h2 id="modalTitulo">
+                Nova Imagem
+            </h2>
+
+            <p>
+                Cadastre ou edite uma imagem do portfólio.
+            </p>
+
+            <form id="formImagem">
+
+                <input
+                    type="hidden"
+                    id="linhaEditando">
+
+                <label>
+                    Título
+                </label>
+
+                <input
+                    type="text"
+                    id="tituloImagem"
+                    required>
+
+                <label>
+                    Categoria
+                </label>
+
+                <select
+                    id="categoriaImagem"
+                    required>
+
+                    <option value="Geometria">
+                        Geometria
+                    </option>
+
+                    <option value="Realismo">
+                        Realismo
+                    </option>
+
+                    <option value="Pintura">
+                        Pintura
+                    </option>
+
+                    <option value="Loja">
+                        Loja
+                    </option>
+
+                </select>
+
+                <label>
+                    Descrição
+                </label>
+
+                <textarea
+                    id="descricaoImagem"
+                    rows="3"
+                    required></textarea>
+
+                <label>
+                    Imagem
+                </label>
+
+                <input
+                    type="file"
+                    id="arquivoImagem"
+                    accept="image/*">
+
+                <div class="preview-box">
+                    <img
+                        id="previewImagem"
+                        src=""
+                        alt="Preview da imagem">
+                </div>
+
+                <button
+                    type="submit"
+                    class="btn-save">
+
+                    Salvar Imagem
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script src="/js/admin.js"></script>
+
+</body>
+</html>
